@@ -1,0 +1,7 @@
+prvi:
+  naziv: ime oglas
+  opis: Tražimo radnika koji zna ...
+  poslodavac: Tvrtka najbolja
+  email: neki9@domena.com
+  od: Date.today
+  do: Date.tomorrow

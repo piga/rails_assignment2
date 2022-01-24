@@ -1,0 +1,52 @@
+<%= form_with(model: ogla) do |form| %>
+  <% if ogla.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ogla.errors.count, "error") %> prohibited this ogla from being saved:</h2>
+
+      <ul>
+        <% ogla.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :naziv %>
+    <%= form.text_field :naziv %>
+  </div>
+
+  <div class="field">
+    <%= form.label :opis %>
+    <%= form.text_area :opis %>
+  </div>
+
+  <div class="field">
+    <%= form.label :poslodavac %>
+    <%= form.text_field :poslodavac %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kategorija %>
+    <%= form.select :kategorija, ["Turizam", "Obrazovanje", "Poljoprivreda"], selected: "Poljoprivreda"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :od %>
+    <%= form.date_select :od %>
+  </div>
+
+  <div class="field">
+    <%= form.label :do %>
+    <%= form.date_select :do %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
