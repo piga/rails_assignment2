@@ -1,14 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Ogla, type: :model do  
-  context "validation tests" do
-    let (:params) {{naziv: "ime", opis: "Tražimo radnika koji zna ...", poslodavac: "Tvrtka najbolja", email:"neki9@domena.com", od: Date.today, do: Date.tomorrow}}
-    
-    it "naziv nebi smio biti prazan" do
-      o = Ogla.new(params.except(:naziv))
-      expect(o.save).to eq false
-    end
-    
+
     it "Opis nebi smio biti prazan" do
       o = Ogla.new(params.except(:opis))
       expect(o.save).to eq false

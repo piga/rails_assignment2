@@ -1,4 +1,6 @@
 class Ogla < ApplicationRecord
+  has_many :prijavas, dependent: :destroy
+
   #scope :aktivni_oglasi, -> {where(aktivan: true)}
   #scope :neaktivni_oglasi, -> {where(aktivan: false)}
   

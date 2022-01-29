@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_163019) do
+ActiveRecord::Schema.define(version: 2022_01_29_123632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,18 @@ ActiveRecord::Schema.define(version: 2022_01_09_163019) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "prijavas", force: :cascade do |t|
+    t.string "ime_i_prezime"
+    t.date "dat_rodenja"
+    t.string "email"
+    t.string "telefon"
+    t.string "boraviste"
+    t.bigint "ogla_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "str_sprema"
+    t.index ["ogla_id"], name: "index_prijavas_on_ogla_id"
+  end
+
+  add_foreign_key "prijavas", "oglas"
 end

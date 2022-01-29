@@ -1,7 +1,7 @@
 <%= form_with(model: ogla) do |form| %>
   <% if ogla.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(ogla.errors.count, "error") %> prohibited this ogla from being saved:</h2>
+      <h2><%= pluralize(ogla.errors.count, "error") %> prohibited this oglas from being saved:</h2>
 
       <ul>
         <% ogla.errors.each do |error| %>
