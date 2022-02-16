@@ -15,6 +15,8 @@ class PrijavasController < ApplicationController
     
     respond_to do |format|
       if @prijava.save
+        PrijavaMailer.with(prijava: @prijava, oglas: @ogla).nova.deliver_later
+        
         format.html { redirect_to ogla_path(@ogla), notice: "prijava was successfully created." }
         format.json { render :show, status: :created, location: @prijava }
       else

@@ -42,6 +42,8 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  #sljedeću liniju sam ja stavio
+  config.action_mailer.default charset: "Windows-1252"
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
