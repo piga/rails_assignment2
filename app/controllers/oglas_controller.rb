@@ -8,6 +8,7 @@ class OglasController < ApplicationController
 
   # GET /oglas/1 or /oglas/1.json
   def show
+    @prijava = @ogla.prijavas.build
   end
 
   # GET /oglas/new

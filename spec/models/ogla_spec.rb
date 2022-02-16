@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Ogla, type: :model do  
-
+  context "validacija polja" do
+    let (:params) {{naziv: "ime", opis: "Tražimo radnika koji zna ...", poslodavac: "Tvrtka najbolja", email:"neki9@domena.com", od: Date.today}}
+    
     it "Opis nebi smio biti prazan" do
       o = Ogla.new(params.except(:opis))
       expect(o.save).to eq false
