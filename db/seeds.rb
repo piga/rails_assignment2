@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Ogla.destroy_all
+
+
+100.times do
+  Ogla.create(
+    naziv: Faker::Company.catch_phrase,
+    opis: Faker::Lorem.paragraph(sentence_count: 3),
+    poslodavac: Faker::Company.name,
+    email: Faker::Internet.email,
+    kategorija: Faker::Company.industry,
+    od: Faker::Date.between(from: 3.years.ago, to: Date.today),
+    do: Faker::Date.between(from: 1.year.ago, to: 2.months.from_now),
+  ) 
+end
