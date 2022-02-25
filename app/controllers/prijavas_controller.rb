@@ -11,11 +11,13 @@ class PrijavasController < ApplicationController
   end
 
   def create
-    @prijava = @ogla.prijavas.build(prijava_params)
+    @prijava = @ogla.prijavas.build(prijava_params.except(:zivotopis))
     
     respond_to do |format|
       if @prijava.save
         PrijavaMailer.with(prijava: @prijava, oglas: @ogla).nova.deliver_later
+        
+        upload
         
         format.html { redirect_to ogla_path(@ogla), notice: "prijava was successfully created." }
         format.json { render :show, status: :created, location: @prijava }
@@ -32,9 +34,17 @@ class PrijavasController < ApplicationController
       @ogla = Ogla.find(params[:ogla_id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def prijava_params
-      params.require(:prijava).permit(:ime_i_prezime, :dat_rodenja, :email, :telefon, :boraviste, :str_sprema, :ogla_id)
+    def upload
+      uploaded_file = params[:prijava][:zivotopis]
+      File.open(Rails.root.join("public", "uploads", uploaded_file.original_filename), "wb") do |file|
+        file.write(uploaded_file.read)
+      end
     end
   
+    # Only allow a list of trusted parameters through.
+    def prijava_params
+      params.require(:prijava).permit(:ime_i_prezime, :dat_rodenja, :email, :telefon, :boraviste, :str_sprema, :ogla_id, :zivotopis)
+    end
+  
+    
 end
