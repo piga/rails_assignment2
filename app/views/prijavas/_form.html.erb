@@ -1,5 +1,18 @@
 
-<%= form_with(model: @prijava, url: create_prijava_path(@ogla)) do |form| %>
+
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= form_with(model: @prijava, url: create_prijava_path(@ogla)) do |form| %>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Prijava na oglas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+ 
   <% if @prijava.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@prijava.errors.count, "error") %> prohibited this prijavas from being saved:</h2>
@@ -12,38 +25,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :ime_i_prezime %>
-    <%= form.text_field :ime_i_prezime %>
+
+ <div class="form-group row">  
+    <%= form.label(:ime_i_prezime, class: "col-sm-4 col-form-label") %>
+    <div class="col-sm-8">
+      <%= form.text_field(:ime_i_prezime, class: "form-control") %>
+    </div>  
+  </div>
+<div class="form-group row">  
+    <%= form.label(:dat_rodenja, class: "col-sm-4 col-form-label") %>
+    <div class="col-sm-8">
+      <%= form.date_field(:dat_rodenja, class: "form-control") %>
+    </div>  
+  </div>
+<div class="form-group row">  
+    <%= form.label(:email, class: "col-sm-4 col-form-label") %>
+    <div class="col-sm-8">
+      <%= form.email_field(:email, class: "form-control") %>
+    </div>  
+  </div>
+<div class="form-group row">  
+    <%= form.label(:telefon, class: "col-sm-4 col-form-label") %>
+    <div class="col-sm-8">
+      <%= form.telephone_field(:telefon, class: "form-control") %>
+    </div>  
+  </div>
+<div class="form-group row">  
+    <%= form.label(:boraviste, class: "col-sm-4 col-form-label") %>
+    <div class="col-sm-8">
+      <%= form.text_field(:boraviste, class: "form-control") %>
+    </div>  
+  </div>
+<div class="form-group row">  
+    <%= form.label(:str_sprema, class: "col-sm-4 col-form-label") %>
+    <div class="col-sm-8">
+      <%= form.select(:str_sprema, ["Izaberi ...", "VSS", "VŠS", "SSS", "NK"], {selected: "Izaberi ..."}, {class: "form-control"}) %>
+    </div>  
   </div>
 
-  <div class="field">
-    <%= form.label :dat_rodenja %>
-    <%= form.date_field :dat_rodenja %>
-  </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+            <%= form.submit class: "btn btn-primary" %>
 
-  <div class="field">
-    <%= form.label :telefon %>
-    <%= form.telephone_field :telefon %>
-  </div>
 
-  <div class="field">
-    <%= form.label :boraviste %>
-    <%= form.text_field :boraviste %>
-  </div>
-
-  <div class="field">
-    <%= form.label :str_sprema %>
-    <!--  moram sljedeći niz nekako povezati sa OPTIONS iz modela prijave  -->
-    <%= form.select :str_sprema, ["VSS", "VŠS", "SSS", "NK"], selected: "VSS"   %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,41 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Oglas</h1>
+<h1>Oglasi</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Naziv</th>
-      <th>Opis</th>
-      <th>Poslodavac</th>
-      <th>Email</th>
-      <th>Kategorija</th>
-      <th>Od</th>
-      <th>Do</th>
-      <th>Istekao?</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @oglas.each do |ogla| %>
-      <tr>
-        <td><%= ogla.naziv %></td>
-        <td><%= ogla.opis %></td>
-        <td><%= ogla.poslodavac %></td>
-        <td><%= ogla.email %></td>
-        <td><%= ogla.kategorija %></td>
-        <td><%= ogla.od %></td>
-        <td><%= ogla.do %></td>
-        <td><%= ogla.aktivan %></td>
-        <td><%= link_to 'Show', ogla %></td>
-        <td><%= link_to 'Edit', edit_ogla_path(ogla) %></td>
-        <td><%= link_to 'Destroy', ogla, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="list-group">
+  <% @oglas.each do |ogla| %>
+    <%= link_to(ogla, class: "list-group-item list-group-item-action flex-column align-items-start") do %>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"> <%= ogla.naziv %> </h5>
+        <small> do <strong> <%= ogla.do %> </strong> </small>
+      </div>
+      <p class="mb-1"> <%= ogla.opis %> </p>
+      <small> <%= ogla.kategorija %> </small>
     <% end %>
-  </tbody>
-</table>
+      
+  <% end %>
+  
+</div>
 
-<br>
-
-<%= link_to 'New Ogla', new_ogla_path %>

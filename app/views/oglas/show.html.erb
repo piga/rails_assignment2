@@ -1,40 +1,57 @@
-<p id="notice"><%= notice %></p>
+<!-- fw znači font weight, a fs znači font size, 1 je h1 a 5 je h5  -->
 
-<p>
-  <strong>Naziv:</strong>
-  <%= @ogla.naziv %>
-</p>
-
-<p>
-  <strong>Opis:</strong>
-  <%= @ogla.opis %>
-</p>
-
-<p>
-  <strong>Poslodavac:</strong>
-  <%= @ogla.poslodavac %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @ogla.email %>
-</p>
-
-<p>
+<div class="container">
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><h1 class="display-7 fw-bold"><%= @ogla.naziv %></h1></li>
+  <li class="list-group-item">
+    <p class="col-md-8 fs-5"><strong>Opis:</strong>
+  <%= @ogla.opis %></p>
+  </li>
+  <li class="list-group-item">
+    <p class="col-md-8 fs-5"><strong>Email:</strong>
+  <%= @ogla.email %></p>
+  </li>
+  <li class="list-group-item">
+    <p class="col-md-8 fs-5">
   <strong>Kategorija:</strong>
   <%= @ogla.kategorija %>
 </p>
-
-<p>
+  </li>
+  <li class="list-group-item">
+  <p class="col-md-8 fs-5">
   <strong>Od:</strong>
   <%= @ogla.od %>
 </p>
 
-<p>
+<p class="col-md-8 fs-5">
   <strong>Do:</strong>
   <%= @ogla.do %>
 </p>
+  </li>
+  <li class="list-group-item">
+    <%= link_to 'Edit', edit_ogla_path(@ogla), class: "fs-5" %> |
+<%= link_to 'Back', oglas_path, class: "fs-5" %>
+  </li>
+  <li class="list-group-item">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Prijavi se na oglas
+    </button>
 
-<%= link_to 'Edit', edit_ogla_path(@ogla) %> |
-<%= link_to 'Back', oglas_path %>
-<%= render 'prijavas/form' %> 
+    
+
+    <%= render 'prijavas/form' %> 
+  </li>
+</ul>
+  
+</div>
+
+<%= javascript_pack_tag "ogla_show" %>
+
+
+
+   
+
+
+   
+  

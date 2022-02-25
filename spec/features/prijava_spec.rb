@@ -33,7 +33,7 @@ RSpec.feature "Prijavas", type: :feature do
         fill_in("Ime i prezime", with: "")
       end   
       click_on("Create")   
-      expect(page).to have_content("prijava was successfully created.")
+      expect(page).to have_content("error")
     end
   end
   

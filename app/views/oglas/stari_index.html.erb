@@ -1,0 +1,53 @@
+<!--
+
+<tr>
+        <td></td>
+        <td><%= ogla.opis %></td>
+        <td><%= ogla.poslodavac %></td>
+        <td><%= ogla.email %></td>
+        <td><%= ogla.kategorija %></td>
+        <td><%= ogla.od %></td>
+        <td><%= ogla.do %></td>
+        <td><%= ogla.aktivan %></td>
+        <td><%= link_to 'Show', ogla %></td>
+        <td><%= link_to 'Edit', edit_ogla_path(ogla) %></td>
+        <td><%= link_to 'Destroy', ogla, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+<table>
+  <thead>
+    <tr>
+      <th>Naziv</th>
+      <th>Opis</th>
+      <th>Poslodavac</th>
+      <th>Email</th>
+      <th>Kategorija</th>
+      <th>Od</th>
+      <th>Do</th>
+      <th>Istekao?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @oglas.each do |ogla| %>
+      <tr>
+        <td><%= ogla.naziv %></td>
+        <td><%= ogla.opis %></td>
+        <td><%= ogla.poslodavac %></td>
+        <td><%= ogla.email %></td>
+        <td><%= ogla.kategorija %></td>
+        <td><%= ogla.od %></td>
+        <td><%= ogla.do %></td>
+        <td><%= ogla.aktivan %></td>
+        <td><%= link_to 'Show', ogla %></td>
+        <td><%= link_to 'Edit', edit_ogla_path(ogla) %></td>
+        <td><%= link_to 'Destroy', ogla, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ogla', new_ogla_path %>
