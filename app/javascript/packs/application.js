@@ -15,7 +15,6 @@ import "bootstrap/dist/css/bootstrap"
 
 import "../stylesheets/my_style"
 
-import "../script/prijava"
 
 Rails.start()
 Turbolinks.start()

@@ -16,10 +16,10 @@ class PrijavasController < ApplicationController
     respond_to do |format|
       if @prijava.save
         PrijavaMailer.with(prijava: @prijava, oglas: @ogla).nova.deliver_later
-        
+        spe
         #upload
-        
-        format.html { redirect_to ogla_path(@ogla), notice: "prijava was successfully created." }
+        flash[:success] = "prijava was successfully created."
+        format.html { redirect_to ogla_path(@ogla) }
         format.json { render :show, status: :created, location: @prijava }
       else
         format.html { render "oglas/show", status: :unprocessable_entity }
