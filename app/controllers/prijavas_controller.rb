@@ -16,7 +16,6 @@ class PrijavasController < ApplicationController
     respond_to do |format|
       if @prijava.save
         PrijavaMailer.with(prijava: @prijava, oglas: @ogla).nova.deliver_later
-        spe
         #upload
         flash[:success] = "prijava was successfully created."
         format.html { redirect_to ogla_path(@ogla) }

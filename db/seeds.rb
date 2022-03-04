@@ -8,6 +8,7 @@
 
 Ogla.destroy_all
 
+User.create(email: "darko@vulin.eu", password_digest: "secret")
 
 100.times do
   Ogla.create(
