@@ -7,8 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Ogla.destroy_all
+User.destroy_all
+Prijava.destroy_all
 
-User.create(email: "darko@vulin.eu", password_digest: "secret")
+User.create(email: "darko@vulin.eu", password_digest: "secret", ime_i_prezime: "Darko Vulin")
 
 100.times do
   Ogla.create(

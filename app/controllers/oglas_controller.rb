@@ -1,7 +1,6 @@
 class OglasController < ApplicationController
   
-  
-  http_basic_authenticate_with name: User.first.email, password: User.first.password_digest, except: :index
+  before_action :authorize, except: [:index, :show]
   
   before_action :set_ogla, only: %i[ show edit update destroy ]
 

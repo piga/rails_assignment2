@@ -4,13 +4,13 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
-    validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  #attr_accessor :email, :password_digest
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true
 
   private
 
   def downcase_email
-    self.email = email.downcase
+    self.email.downcase
   end
 end
