@@ -42,7 +42,7 @@ class OglasController < ApplicationController
   def update
     respond_to do |format|
       if @ogla.update(ogla_params)
-        format.html { redirect_to ogla_url(@ogla), notice: "Ogla was successfully updated." }
+        format.html { redirect_to ogla_url(@ogla), notice: "Oglas was successfully updated." }
         format.json { render :show, status: :ok, location: @ogla }
       else
         format.html { render :edit, status: :unprocessable_entity }
