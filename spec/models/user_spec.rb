@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before(:all) do
+    User.destroy_all  #ovo sma morao dodati jer sam iz nekog razloga imao na početku puno Usera
+  end
+  
   it "bez emaila se ne može napraviti User" do
     User.create()
     expect(User.count).to eq 0
@@ -24,14 +28,14 @@ RSpec.describe User, type: :model do
   end
   
   it "ako je dobar email onda se User napravi" do
-    User.create(email: "kokok@wfw.ju", password_digest: "98fwj8fw98")
+    User.create(email: "darko@vulin.eu", password: "secret")
     expect(User.count).to eq 1
   end
   
 #iz nekog razloga mi ne želi provjeravati jedinstvenost emaila
   it "ne mogu postojati dva Usera s istim emailom" do
-    User.create(email: "kokok@wfw.ju", password_digest: "98fwj8fw98")
-    User.create(email: "kokok@wfw.ju", password_digest: "98fwj8fw98")
+    User.create(email: "kokok@wfw.ju", password: "98fwj8fw98")
+    User.create(email: "kokok@wfw.ju", password: "98fwj8fw98")
     expect(User.count).to eq 1
   end
 end

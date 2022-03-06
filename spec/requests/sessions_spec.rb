@@ -31,7 +31,7 @@ RSpec.describe "Sessions", type: :request do
   
   
   describe "create" do
-    before(:each) do
+    before(:all) do
       User.create(email: "neki@email.com", password: "lozinka")
     end
     

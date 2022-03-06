@@ -67,6 +67,7 @@ RSpec.feature "Sessions", type: :feature do
       click_button "Log in"
           
       expect(page).to have_content("Prijavili ste se!")
+      expect(page).to have_content("Svi oglasi")
     end
   end
 end
