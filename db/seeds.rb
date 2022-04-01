@@ -12,10 +12,10 @@ Prijava.destroy_all
 
 User.create(email: "darko@vulin.eu", password: "secret", ime_i_prezime: "Darko Vulin")
 
-100.times do
+10.times do
   Ogla.create(
     naziv: Faker::Company.catch_phrase,
-    opis: Faker::Lorem.paragraph(sentence_count: 3),
+    opis: Faker::Lorem.paragraph(sentence_count: 10),
     poslodavac: Faker::Company.name,
     email: Faker::Internet.email,
     kategorija: Faker::Company.industry,

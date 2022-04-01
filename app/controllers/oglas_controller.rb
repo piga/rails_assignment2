@@ -7,6 +7,7 @@ class OglasController < ApplicationController
   # GET /oglas or /oglas.json
   def index
     @oglas = Ogla.all
+    render "indexpravi"
   end
 
   # GET /oglas/1 or /oglas/1.json

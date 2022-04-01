@@ -1,0 +1,40 @@
+<%= render "header" %>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="chevron-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+  </symbol>
+</svg>
+<p id="notice"><%= notice %></p>
+<div class="container px-4 py-2" id="featured-3">
+  <% svi = @oglas.count %>
+  <% brojac = 1 %>
+  <% @oglas.each do |ogla| %>
+    <% if brojac == svi %>
+      <% if brojac.modulo(3) == 1 %>
+      <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
+          <%= render partial: "show_oglas", locals: {ogla: ogla} %>
+      <% else %>
+          <%= render partial: "show_oglas", locals: {ogla: ogla} %>
+
+<% end %>
+</div>
+<% else %>
+    <% if brojac.modulo(3) == 1 %>
+      <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
+          <%= render partial: "show_oglas", locals: {ogla: ogla} %>
+
+      
+      
+    <% elsif brojac.modulo(3) == 2 %>
+          <%= render partial: "show_oglas", locals: {ogla: ogla} %>
+
+    <% else %>
+          <%= render partial: "show_oglas", locals: {ogla: ogla} %>
+
+      </div>
+<% end %>
+  <% end %>
+    <% brojac += 1 %>
+  <% end %>
+  </div>
