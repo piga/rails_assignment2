@@ -15,7 +15,7 @@
   
         <% else %>
           <li class="nav-item">
-            <%= link_to "Prijava", login_path, html_options = {class: "nav-link active fs-6 fw-bold"} %>
+            <%= link_to "Prijava", nil, html_options = {class: "nav-link active fs-6 fw-bold", "data-bs-toggle": "modal", "data-bs-target": "#loginModal"} %>
           </li>
         <% end %>
       </ul>

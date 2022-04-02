@@ -1,0 +1,26 @@
+<!-- Modal -->
+<div class="modal modal-signin py-5 fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-5 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+      </div>
+      <div class="modal-body p-5 pt-0">
+        <%= form_tag "/sessions", method: :post do %>
+          <div class="form-floating mb-3 field">
+            <!--  Mislim da mi ovaj params :email i ne treba, to se samo doda, ali neka stoji  -->
+            <%= email_field_tag :email, params[:email], {class: "form-control rounded-4", id: "emailInput", placeholder: "ime@domena.com"} %>
+            <%= label_tag :email, nil, for: "emailInput" %><br />
+          </div>
+          <div class="form-floating mb-3 field">
+            <%= password_field_tag :password, nil, {class: "form-control rounded-4", id: "passwordInput", placeholder: "Lozinka"} %>
+            <%= label_tag :password, "Lozinka", for: "passwordlInput" %><br />
+          </div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= submit_tag "Ulogiraj se", class: "btn btn-primary fw-bold" %>
+        <% end %>
+      </div>
+      <div class="modal-footer border-top-0">
+      </div>
+    </div>
+  </div>
+</div>
