@@ -8,10 +8,11 @@ class SessionsController < ApplicationController
     #begin
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to root_url, notice: "Prijavili ste se!"
+        flash[:success] = "Prijavili ste se!" 
+        redirect_to root_url
       else
-        flash.now.alert = "Unijeli ste pogrešan email ili lozinku."
-        render "new"
+        flash[:warning] = "Unijeli ste pogrešan email ili lozinku."
+        redirect_to root_url
       end
     #rescue BCrypt::Errors::InvalidHash
       #puts "da da"
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
   
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Odjavili ste se!"
+    flash[:info] = "Odjavili ste se!"
+    redirect_to root_url
   end
 end
