@@ -28,9 +28,8 @@ RSpec.feature "Sessions", type: :feature do
       expect(page.has_css?("#emailInput")).to eq true
     end
     
-    scenario "krivo ispunjavam login" do 
-      click_on("Prijava")   
-      expect(page).to have_content("Modal title")
+    scenario "nema nijednog flasha" do 
+      expect(page.has_css?(".alert")).to eq false
     end
   end
   
@@ -75,8 +74,32 @@ RSpec.feature "Sessions", type: :feature do
       fill_in "Lozinka", with: "lozinka"
       click_button "Ulogiraj se"
 
+      expect(page.has_css?(".alert-success", count: 1)).to eq true
       expect(page).to have_content("Prijavili ste se!")
       expect(page.has_link?("Odjava", visible: :visible)).to eq true
+    end
+  end
+  
+  context "možeš se odjaviti ako" do
+    it "se prijaviš pa odjaviš" do
+      User.create(email: "neki@email.com", password: "lozinka")
+      visit oglas_path
+      
+      click_on "Prijava"
+      
+      fill_in "Email", with: "neki@email.com"
+      fill_in "Lozinka", with: "lozinka"
+      click_button "Ulogiraj se"
+
+      #flash
+      expect(page.has_css?(".alert-success", count: 1)).to eq true
+      expect(page).to have_content("Prijavili ste se!")
+      page.find_button("iksic").click
+      expect(page.has_css?(".alert-success", visible: :hidden)).to eq false
+      expect(page.has_link?("Odjava", visible: :visible)).to eq true
+      page.find_link("Odjava").click
+      expect(page.has_css?(".alert-info")).to eq true
+      expect(page).to have_content("Odjavili ste se!")
     end
   end
 end

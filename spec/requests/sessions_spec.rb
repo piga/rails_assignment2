@@ -2,21 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
   
-  describe "provjeravam rade li rute" do
-
-    it "login success" do
-      get "/login"
-      expect(response).to have_http_status(:success)
-    end
-  
-   
-    it "logout success" do
-      get "/logout"
-      follow_redirect!
-      expect(response).to have_http_status(:success)
-    end
-  end
-  
+=begin
+Nema potreba za ovim jer mi je login unutar modala inema rute ali zanimljivo je vidjeti ovaj subject
   describe "provjeravam jeli login ruta prikazuje login stranicu" do
     subject {get "/login"}
     
@@ -28,7 +15,7 @@ RSpec.describe "Sessions", type: :request do
       expect(subject).to_not render_template("sessions/create")
     end
   end
-  
+=end
   
   describe "create" do
     before(:all) do
@@ -47,8 +34,7 @@ RSpec.describe "Sessions", type: :request do
     it "kriva lozinka nas vodi do login stranice" do
       params[:password] = "krivalozinka"
       post "/sessions", params: params 
-      expect(response).to render_template(:new)
-      expect(response.body).to include("Log In")
+      expect(response).to redirect_to(root_url)
     end
   end
 
