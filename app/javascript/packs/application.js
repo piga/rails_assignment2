@@ -22,15 +22,5 @@ import "bootstrap/dist/js/bootstrap.min.js"
 import "../stylesheets/my_style.css"
 import "../stylesheets/sassy"
 
-//import ga from "../src/popper"
 
-console.log("fomio")
-console.log("ggg")
-console.log ("rol")
-console.log("pppp")
-console.log("toni")
-
-//import "../src/test"
-//import "../src/poper"
-//import "../stylesheets/"
 

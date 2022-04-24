@@ -1,0 +1,8 @@
+<!-- Znam da tu treba biti Date.today -->
+<% if ogla.do < Date.new(2021, 9, 1) %>  
+  <span class="badge bg-secondary">Istekao</span>
+<% elsif ogla.do == Date.new(2021, 9, 1) %>
+  <span class="badge bg-warning">Zadnji dan</span>
+<% else %>
+  <span class="badge bg-primary">Aktivan</span>
+<% end %>

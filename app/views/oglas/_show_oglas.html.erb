@@ -1,4 +1,17 @@
-<div class="feature col">
-          <h3 class="fs-4"> <%= ogla.naziv %>  </h3>
+<div class="col">
+<div class="card border-primary">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= ogla.naziv %>   
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">Kategorija <b><%= ogla.kategorija %></b></h6>
+    <p class="card-text">Vrijedi do <b><%= ogla.do %></b></p>
+      <div class="d-flex">
           <%= render partial: "show_link", locals: {ogla: ogla} %>
-                  </div>
+   <!-- <a href="#" class="card-link me-auto">Card link</a> -->
+          <%= render partial: "znacka", locals: {ogla: ogla} %>
+      </div>
+
+  </div>
+</div>
+</div>

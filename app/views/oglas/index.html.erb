@@ -6,13 +6,13 @@
     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
   </symbol>
 </svg>
-<div class="container px-4 py-2" id="featured-3">
+<div class="container" id="featured-3">
   <% svi = @oglas.count %>
   <% brojac = 1 %>
   <% @oglas.each do |ogla| %>
     <% if brojac == svi %>
       <% if brojac.modulo(3) == 1 %>
-      <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
+      <div class="row gy-5 row-cols-2 row-cols-lg-3 mb-4">
           <%= render partial: "show_oglas", locals: {ogla: ogla} %>
       <% else %>
           <%= render partial: "show_oglas", locals: {ogla: ogla} %>
@@ -21,7 +21,7 @@
 </div>
 <% else %>
     <% if brojac.modulo(3) == 1 %>
-      <div class="row g-4 py-3 row-cols-1 row-cols-md-3">
+      <div class="row gy-5 row-cols-2 row-cols-lg-3 mb-4">
           <%= render partial: "show_oglas", locals: {ogla: ogla} %>
 
       
