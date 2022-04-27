@@ -5,7 +5,6 @@ RSpec.describe PrijavaMailer, type: :mailer do
   
   
   describe "nova" do
-    cdccd
     
     let(:mail) { PrijavaMailer.with(prijava: @prijava, oglas: @oglas).nova }
 

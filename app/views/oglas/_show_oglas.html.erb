@@ -4,7 +4,7 @@
     <h5 class="card-title">
       <%= ogla.naziv %>   
     </h5>
-    <h6 class="card-subtitle mb-2 text-muted">Kategorija <b><%= ogla.kategorija %></b></h6>
+    <h6 class="card-subtitle mb-2 text-muted"><small>Kategorija</small> <b><%= ogla.kategorija %></b></h6>
     <p class="card-text">Vrijedi do <b><%= ogla.do %></b></p>
       <div class="d-flex">
           <%= render partial: "show_link", locals: {ogla: ogla} %>

@@ -23,8 +23,8 @@ RSpec.feature "Prijavas", type: :feature do
     
     
     scenario "pravilno popunjavam" do   
-      click_on("Create")   
-      expect(page).to have_content("prijava was successfully created.")
+      click_on("Podnesi")   
+      expect(page).to have_content("Prijava was successfully created.")
     end
     
     scenario "krivo popunjavam" do
@@ -32,8 +32,8 @@ RSpec.feature "Prijavas", type: :feature do
         #krivo ću popuniti ovo polje
         fill_in("Ime i prezime", with: "")
       end   
-      click_on("Create")   
-      expect(page).to have_content("error")
+      click_on("Podnesi")   
+      expect(page).to have_content("Prijava nije uspjela jer ima grešaka!")
     end
   end
   

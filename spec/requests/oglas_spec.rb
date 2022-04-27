@@ -23,13 +23,14 @@ RSpec.describe "Oglas", type: :request do
       get new_ogla_path
     end
     
-    it "ne vodi do novog oglasa" do
+    it "nismo autentificirani pa nećemo dobiti new template" do
+      follow_redirect!
       expect(response).to_not render_template("oglas/new")
     end
     
-    it "prvo treba proći autentifikaciju" do
+    it "nismo autentificirali pa će nas vratiti na index stranicu" do
       follow_redirect!
-      expect(response).to render_template("sessions/new")
+      expect(response).to render_template("index")
     end
   end
   
@@ -40,17 +41,18 @@ RSpec.describe "Oglas", type: :request do
     
     let(:params_session) {{email: "neki@email.com", password: "lozinka"}}
     
-    it "treba nam autentifikacija" do
+    it "nismo autentificirani pa nas vraća na index" do
       post "/oglas", :params => {:ogla => {naziv: "ime", opis: "Tražimo radnika koji zna ...", poslodavac: "Tvrtka najbolja", email:"neki10@domena.com", od: Date.today, do: Date.tomorrow}}
       follow_redirect!
-      expect(response).to render_template("sessions/new")
+      expect(response).to render_template("index")
     end
     
-    it "uspješno" do
+    it "autentificirali smo se pa moežmo CREATE i dobijemo show" do
       post "/sessions", params: params_session
       post "/oglas", :params => {:ogla => {naziv: "ime", opis: "Tražimo radnika koji zna ...", poslodavac: "Tvrtka najbolja", email:"neki10@domena.com", od: Date.today, do: Date.tomorrow}}
       follow_redirect!
       expect(response).to render_template(:show)    
+      expect(response.body).to include "Ogla was successfully created."
     end
     
     it "neuspješno jer je krivi email" do
@@ -72,9 +74,9 @@ RSpec.describe "Oglas", type: :request do
       expect(response).to_not render_template("oglas/edit")
     end
     
-    it "prvo treba proći autentifikaciju" do
+    it "nema autentifikacije pa nas vraća na index" do
       follow_redirect!
-      expect(response).to render_template("sessions/new")   
+      expect(response).to render_template("index")   
     end
   end
   
@@ -86,13 +88,13 @@ RSpec.describe "Oglas", type: :request do
     
     let(:params_session) {{email: "neki@email.com", password: "lozinka"}}
     
-    it "treba nam autentifikacija" do
+    it "nema autentifikacije pa nas vraća na index" do
       patch ogla_url(@o), params: {ogla: {naziv: "novo ime"}}
       follow_redirect!
-      expect(response).to render_template("sessions/new")
+      expect(response).to render_template("index")
     end
     
-    it "uspješno" do
+    it "sa uspješnom autentifikacijom i točnim update podacima dobijemo show" do
       post "/sessions", params: params_session
       patch ogla_url(@o), :params => {:ogla => {naziv: "neko novo ime"}}
       follow_redirect!
@@ -121,17 +123,18 @@ RSpec.describe "Oglas", type: :request do
     
     let(:params_session) {{email: "neki@email.com", password: "lozinka"}}
     
-    it "treba nam autentifikacija" do
+    it "nema autentifikacije pa nas vraća na index" do
       delete "/oglas/#{@o.id}"  #neznam zašto mi tu nije params uspjelo  
       follow_redirect!
-      expect(response).to render_template("sessions/new")
+      expect(response).to render_template("index")
     end
     
-    it "uspješno" do
+    it "sa autentifikacijom možemo delete i dobijemo index stranicu" do
       post "/sessions", params: params_session
       delete "/oglas/#{@o.id}"  #neznam zašto mi tu nije params uspjelo  
       follow_redirect!
       expect(response).to render_template(:index)
+      expect(response.body).to include "Ogla was successfully destroyed."
     end
   end
 end

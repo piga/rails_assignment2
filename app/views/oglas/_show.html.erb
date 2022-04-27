@@ -1,0 +1,48 @@
+<!-- Prikaz oglasa -->
+    <main role="main" class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <h1><%= @ogla.naziv %></h1>
+            </div>
+        </div>
+        
+      <!-- Opis oglasa -->
+        <div class="row">
+            <div class="col">
+                 <a class="lead link-primary icon-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <strong>Prikaži opis oglasa 
+                     <i class="bi bi-chevron-right"></i>
+                     </strong>
+                  </a>
+        <div class="collapse" id="collapseExample">
+          
+<p class="fs-6 lh-base">
+           <%= @ogla.opis %>
+          </p>
+                </div>
+            </div>
+        </div>
+    
+        
+      <!-- Detalji oglasa -->
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">poslodavac:</th>
+      <td><%= @ogla.poslodavac %></td>
+    </tr>
+    <tr>
+      <th scope="row">email: </th>
+      <td><%= @ogla.email %></td>
+    </tr>
+    <tr>
+      <th scope="row">kategorija</th>
+        <td><%= @ogla.kategorija %></td>
+    </tr>
+    <tr>
+      <th scope="row">trajanje oglasa</th>
+        <td>od <%= @ogla.od %> do <%= @ogla.do %></td>
+    </tr>
+  </tbody>
+      </table>
+    </main>

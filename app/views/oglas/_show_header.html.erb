@@ -1,0 +1,51 @@
+<header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        
+        <%= link_to oglas_path, class: "link-primary fs-5 icon-link" do %>
+        <b>
+        
+            <i class="bi bi-chevron-left" style="font-weight: 600;"></i>
+            Nazad
+          </b>
+        <% end %>
+
+          <div class="mr-auto">
+           
+            <% if current_user %>
+      <%= link_to edit_ogla_path(@ogla), class: "fs-5 btn btn-secondary" do %>
+                  <i class="bi bi-pencil"></i>
+                    Uredi
+      <% end %>
+      <%= link_to {controller: "oglas", action: "destroy", id: @ogla}, class: "fs-5 btn btn-danger" do %>
+              <i class="bi bi-trash"></i>
+                    Briši
+      <% end %>
+            <%= link_to "Odjava", logout_path, class: "btn btn-light" %>
+    <% else %>
+             <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <b>Prijavi se na oglas</b>
+    </button>
+            
+    <% end %>
+                
+          <!--       
+               <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>Admin</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">
+            <i class="bi bi-box-arrow-right"></i>
+            Sign out</a></li>
+      </ul>
+    </div>  -->
+  </div>
+          </div>
+    </nav>
+    </header>

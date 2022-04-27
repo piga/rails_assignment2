@@ -29,7 +29,8 @@ class OglasController < ApplicationController
 
     respond_to do |format|
       if @ogla.save
-        format.html { redirect_to ogla_url(@ogla), notice: "Ogla was successfully created." }
+        flash[:success] = "Ogla was successfully created."
+        format.html { redirect_to ogla_url(@ogla) }
         format.json { render :show, status: :created, location: @ogla }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,17 +57,14 @@ class OglasController < ApplicationController
     @ogla.destroy
 
     respond_to do |format|
-      format.html { redirect_to oglas_url, notice: "Ogla was successfully destroyed." }
+      flash[:info] = "Ogla was successfully destroyed."
+      format.html { redirect_to oglas_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-  
-    def user_name
-      "ddd"
-    end
   
     def set_ogla
       @ogla = Ogla.find(params[:id])

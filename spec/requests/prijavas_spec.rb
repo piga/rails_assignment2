@@ -35,17 +35,18 @@ RSpec.describe "Prijavas", type: :request do
     end
     
     it "create" do
-      #post create_prijava_path(@o), params: {prijava: {ime_i_prezime: "Darko Vulin", dat_rodenja: Date.today, email: "fwioj@wef.j", telefon: "582092453", boraviste: "Zagreb ulica Slavojie 43", str_sprema: "SSS", ogla_id: @o.to_param}}
       post create_prijava_path(@o), params: params
       follow_redirect!
-      expect(response.body).to include "prijava was successfully created."
+      expect(response).to render_template "oglas/show"
+      expect(response.body).to include "Prijava was successfully created."
     end
     
     
-    #neznam zašto mi ne radi ovaj test, na serveru mi live sve radi
+    #neznam zašto ne radi ovaj test, live sve radi
     it "create, stavio sam krivi email" do
       params[:email] = "fwfge"
       post create_prijava_path(@o), params: params
+      expect(response).to render_template "oglas/show"
       expect(response.body).to include "prohibited this prijavas from being saved:"
     end
   end

@@ -12,15 +12,15 @@ class PrijavasController < ApplicationController
 
   def create
     @prijava = @ogla.prijavas.build(prijava_params.except(:zivotopis))
-    
     respond_to do |format|
       if @prijava.save
         PrijavaMailer.with(prijava: @prijava, oglas: @ogla).nova.deliver_later
         #upload
-        flash[:success] = "prijava was successfully created."
+        flash[:success] = "Prijava was successfully created."
         format.html { redirect_to ogla_path(@ogla) }
         format.json { render :show, status: :created, location: @prijava }
       else
+        flash.now[:danger] = "Prijava nije uspjela jer ima grešaka!"
         format.html { render "oglas/show", status: :unprocessable_entity }
         format.json { render json: @prijava.errors, status: :unprocessable_entity }
       end

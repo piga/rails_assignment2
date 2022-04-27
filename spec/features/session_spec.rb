@@ -12,7 +12,7 @@ RSpec.feature "Sessions", type: :feature do
       expect(page).to have_content("Prijava")
     end
     
-    scenario "login modal je skriven" do
+    scenario "login modal je skriven. Uvijek problemi s ispitivanjem vidljivosti modala." do
       expect(page).to have_css(".modal", visible: :hidden)
     end
     
