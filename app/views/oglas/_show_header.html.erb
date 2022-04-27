@@ -18,10 +18,8 @@
                   <i class="bi bi-pencil"></i>
                     Uredi
       <% end %>
-      <%= link_to {controller: "oglas", action: "destroy", id: @ogla}, class: "fs-5 btn btn-danger" do %>
-              <i class="bi bi-trash"></i>
-                    Briši
-      <% end %>
+      
+    <%= link_to 'Obriši', @ogla, {method: :delete, "data-confirm": 'Jesi li siguran?', class: "fs-5 btn btn-danger"} %>
             <%= link_to "Odjava", logout_path, class: "btn btn-light" %>
     <% else %>
              <!-- Button trigger modal -->
