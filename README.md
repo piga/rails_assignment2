@@ -17,6 +17,7 @@ Koristeći terminal:
 6. `rails server`
 7. Ako bude problema sa webpackerom onda probajte bundle exec rake webpacker:install 
 Meni je pomoglo
+8. http://localhost:3000/rails/mailers/prijava/nova  je adresa za pogledati email uspješne prijave na posao
 
 
 ## Nedostatci
