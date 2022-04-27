@@ -31,9 +31,9 @@ Meni je pomoglo
 
 ## Što mi je oduzelo najviše vremena?
 
-- Webpaker i webpaker live server
-- Bootstrap, popper i tooltips
-- Capybara vissible i hidden elementi
+- Webpaker i webpaker live server (nije uspjelo)
+- Bootstrap, a popper i tooltips nisam uspio nigdje implementirati
+- Capybara vissible i hidden elementi, mislim da mi visibility negdje radi a negdje ne radi
 - Previše sam radio sa modalima i zbog toga su mi neke stvari bile teže u Capibara testovima.
 - Rspec 
 - Pokretanje postgresql
