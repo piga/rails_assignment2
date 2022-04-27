@@ -2,8 +2,8 @@
 ## Upute za lokalno pokretanje aplikacije
 ### Ruby on Rails verzije
 
-- ** Ruby -v 3.2.1 **
-- ** Rails -v 5.4 **
+- Ruby -v 3.2.1, a može i bilo koji Ruby 3  
+- Rails -v 5.4 
 
 ### Kloniranje i pokretanje
 
