@@ -1,21 +1,11 @@
-<h1>Uspješno ste se prijavili na oglas</h1>
+<body style="font: 100%, Georgia, Garamond, &quot;Times New Roman&quot;, serif;text-align: center;color: white;padding: 0;margin: 0;">
+	<main style="width: auto;max-width: 1000px;min-height: 400px;margin: 10px auto;border: 5px solid white;border-radius: 10px;background-color: blueviolet;background-image: linear-gradient(blueviolet, white);">
+        <h1><%= @prijava.ime_i_prezime %></h1>
+        <p>Uspješno ste se prijavili na oglas </p>
+        <h2 style="font-size: 1.5em;text-decoration: underline;">
+          <%= link_to @oglas.naziv, ogla_url(@oglas, host: 'http://127.0.0.1:3000'), style: "color: white;" %>
 
-<p>Detalji oglasa</p>
-<p>
-  <%= @prijava.ime_i_prezime %> Uspješno ste se prijavili na oglas
-</p>
-<p>
-  <%= @prijava.dat_rodenja %>
-</p>
-<p>
-  <%= @prijava.email %>
-</p>
-<p>
-<%= @prijava.telefon %>
-</p>
-<p>
-<%= @prijava.boraviste %>
-</p>
-<p>
-<%= @prijava.str_sprema %>
-</p>
+      </h2>  
+        <p><span style="font-weight: normal;font-style: normal;font-size: 36px;line-height: 1;letter-spacing: normal;text-transform: none;display: inline-block;white-space: nowrap;word-wrap: normal;direction: ltr;">&#10003;</span></p>
+    </main>
+</body>
